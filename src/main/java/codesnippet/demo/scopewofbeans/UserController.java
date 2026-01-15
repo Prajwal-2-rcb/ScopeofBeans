@@ -2,13 +2,14 @@ package codesnippet.demo.scopewofbeans;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Scope("request")
+@Scope(value = "request",proxyMode = ScopedProxyMode.TARGET_CLASS)
 @RequestMapping("/api")
 public class UserController {
 
