@@ -1,6 +1,7 @@
 package codesnippet.demo.scopewofbeans;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,12 @@ public class HellOController {
     public String sayHello() {
         System.out.println("Hello World");
         return helloService.sayHello();
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+       request.getSession().invalidate();
+       return  "Logout successful";
     }
 
     @PostConstruct
